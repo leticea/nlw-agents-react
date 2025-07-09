@@ -2,6 +2,8 @@
 
 Projeto desenvolvido durante o evento NLW da Rocketseat para demonstrar o uso de agentes inteligentes na web.
 
+- [Back-end - API](https://github.com/leticea/nlw-agents-nodejs)
+
 ## 🚀 Tecnologias
 
 - [Node.js](https://nodejs.org/en/) - v22.16.0
