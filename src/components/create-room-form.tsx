@@ -22,7 +22,7 @@ import { Button } from "./ui/button";
 
 const createRoomSchema = z.object({
   name: z.string().min(3, { message: "Inclua no mínimo 3 caracteres" }),
-  description: z.string(),
+  description: z.string().optional(),
 });
 
 type CreateRoomFormData = z.infer<typeof createRoomSchema>;
@@ -76,7 +76,7 @@ export function CreateRoomForm() {
 
             <FormField
               control={createRoomForm.control}
-              name="name"
+              name="description"
               render={({ field }) => {
                 return (
                   <FormItem>
