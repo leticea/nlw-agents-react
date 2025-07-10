@@ -1,6 +1,6 @@
 # NLW Agents
 
-Projeto desenvolvido durante o evento NLW da Rocketseat para demonstrar o uso de agentes inteligentes na web.
+Projeto desenvolvido durante o evento NLW da **Rocketseat** para demonstrar o uso de agentes inteligentes na web.
 
 - [Back-end - API](https://github.com/leticea/nlw-agents-nodejs)
 
