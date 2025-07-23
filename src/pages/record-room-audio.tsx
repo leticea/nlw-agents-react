@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const isRecordingSupported =
   !!navigator.mediaDevices &&
@@ -8,9 +8,14 @@ const isRecordingSupported =
 
 export function RecordRoomAudio() {
   const [isRecording, setIsRecording] = useState(false);
+  const recorder = useRef<MediaRecorder | null>(null);
 
-  async function stopRecording() {
+  function stopRecording() {
     setIsRecording(false);
+
+    if (recorder.current && recorder.current.state !== "inactive") {
+      recorder.current.stop();
+    }
   }
 
   async function startRecording() {
@@ -29,26 +34,26 @@ export function RecordRoomAudio() {
       },
     });
 
-    const recorder = new MediaRecorder(audio, {
+    recorder.current = new MediaRecorder(audio, {
       mimeType: "audio/webm",
       audioBitsPerSecond: 64_000,
     });
 
-    recorder.ondataavailable = (event) => {
+    recorder.current.ondataavailable = (event) => {
       if (event.data.size > 0) {
         console.log(event.data);
       }
     };
 
-    recorder.onstart = () => {
+    recorder.current.onstart = () => {
       console.log("Gravação iniciada!");
     };
 
-    recorder.onstop = () => {
+    recorder.current.onstop = () => {
       console.log("Gravação encerrada/pausada!");
     };
 
-    recorder.start();
+    recorder.current.start();
   }
 
   return (
