@@ -1,6 +1,8 @@
+import { useCreateRoom } from "@/http/use-create-room";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod/v4";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
@@ -18,8 +20,6 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { useCreateRoom } from "@/http/use-create-room";
 
 const createRoomSchema = z.object({
   name: z.string().min(3, { message: "Inclua no mínimo 3 caracteres" }),
